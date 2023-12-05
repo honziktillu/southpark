@@ -1,43 +1,61 @@
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
+
 const background = new Image();
 background.src = "./res/img/background.png";
-const image = new Image();
-image.src = "./res/img/zombies/zombie1.png";
-canvas.width = 1280;
-canvas.height = 720;
 
-ctx.fillStyle = "white";
-ctx.fillRect(200, 100, 150, 100);
+//promenna pro ukladani vstupu z klavesnice
+// Space: true
+// Space: false
+const keys = {};
 
-ctx.strokeStyle = "red";
-ctx.strokeRect(200, 300, 150, 100);
+// Funkce, ktera posloucha na nejakou akci (event)
+document.addEventListener("keydown", (e) => {
+    keys[e.code] = true; // klavesa: true
+});
 
-ctx.fillStyle = "green";
-ctx.beginPath();
-ctx.moveTo(50, 50);
-ctx.lineTo(100, 50);
-ctx.lineTo(150, 70);
-ctx.lineTo(200, 20);
-ctx.lineTo(50, 50);
-ctx.fill();
+document.addEventListener("keyup", (e) => {
+    keys[e.code] = false; // klavesa: false
+});
 
-let x = 450;
-let y = 100;
-let width = 60;
-let height = 100;
+//Herni smycka
+const gameLoop = () => {
 
-window.onload = () => {
-    ctx.drawImage(background, 0, 0, 1280, 720);
-    ctx.drawImage(image, x, y, 60, 100);
-    setInterval(() => {
-        y += 1;
-        x -= 0.5;
-        width++;
-        height++;
-        ctx.drawImage(background, 0, 0, 1280, 720);
-        ctx.drawImage(image, x, y, width, height);
-        console.log(x);
-    }, 100);
+    //resizeCanvas
+    resizeCanvas();
+
+    //clearCanvas
+    clearCanvas();
+
+    //update
+    update();
+
+    //render
+    render();
+
+    //fps
+    getFps();
+
+    window.requestAnimationFrame(gameLoop);
 }
 
+const resizeCanvas = () => {
+    canvas.width = 1280;
+    canvas.height = 720;
+}
+
+const clearCanvas = () => {
+    //premalujeme cele platno pozadim hry
+    ctx.drawImage(background, 0, 0, 1280, 720);
+}
+
+const update = () => {}
+const render = () => {}
+const getFps = () => {}
+
+//kdyz se nacte stranka, tak se provede fce
+window.onload = () => {
+
+    //jakmile se stranka nacte, vyzadame si prvni snimek herni smycky
+    window.requestAnimationFrame(gameLoop);
+}
