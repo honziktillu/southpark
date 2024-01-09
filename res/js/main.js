@@ -1,8 +1,15 @@
+import { Zombie } from "./zombies/Zombie.js";
+import { Background } from "./ui/basic-utils.js";
+
+const myZombie = new Zombie("Tomas", 5, 0, 150);
+
+const background = new Background();
+
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
 
-const background = new Image();
-background.src = "./res/img/background.png";
+// [] - pole (array)
+// {} - objekt (object)
 
 //promenna pro ukladani vstupu z klavesnice
 // Space: true
@@ -46,7 +53,7 @@ const resizeCanvas = () => {
 
 const clearCanvas = () => {
     //premalujeme cele platno pozadim hry
-    ctx.drawImage(background, 0, 0, 1280, 720);
+    background.draw(ctx)
 }
 
 const update = () => {}
