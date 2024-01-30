@@ -1,0 +1,80 @@
+[
+  {
+    "name": "Aneta",
+    "hp": 2,
+    "speed": 2,
+    "path": "./res/img/zombies/zombie1.png"
+  },
+  {
+    "name": "Jarda",
+    "hp": 10,
+    "speed": 1,
+    "path": "./res/img/zombies/zombie2.png"
+  },
+  {
+    "name": "Mařka",
+    "hp": 15,
+    "speed": 3,
+    "path": "./res/img/zombies/zombie3.png"
+  },
+  {
+    "name": "El mistero Pedro",
+    "hp": 7,
+    "speed": 2,
+    "path": "./res/img/zombies/zombie4.png"
+  },
+  {
+    "name": "Seňor Miguel",
+    "hp": 20,
+    "speed": 1,
+    "path": "./res/img/zombies/zombie5.png"
+  },
+  {
+    "name": "Dyjana plus plus",
+    "hp": 14,
+    "speed": 3,
+    "path": "./res/img/zombies/zombie6.png"
+  },
+  {
+    "name": "Jarmilka",
+    "hp": 1,
+    "speed": 0.5,
+    "path": "./res/img/zombies/zombie7.png"
+  },
+  {
+    "name": "El Chuan",
+    "hp": 9,
+    "speed": 5,
+    "path": "./res/img/zombies/zombie8.png"
+  },
+  {
+    "name": "El Will",
+    "hp": 4,
+    "speed": 3,
+    "path": "./res/img/zombies/zombie9.png"
+  },
+  {
+    "name": "El Papa Franto",
+    "hp": 20,
+    "speed": 1,
+    "path": "./res/img/zombies/zombie10.png"
+  },
+  {
+    "name": "Fabricio",
+    "hp": 5,
+    "speed": 2,
+    "path": "./res/img/zombies/zombie11.png"
+  },
+  {
+    "name": "La Susan",
+    "hp": 1,
+    "speed": 5,
+    "path": "./res/img/zombies/zombie12.png"
+  },
+  {
+    "name": "Seňor Emanuel",
+    "hp": 12,
+    "speed": 1,
+    "path": "./res/img/zombies/zombie13.png"
+  }
+]
