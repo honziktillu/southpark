@@ -18,14 +18,27 @@ export class Zombie {
       height: 200 * this.ratio,
     };
     this.position = {
-      x: 600,
+      x: this.generateRandomInteger(0, 1100),
       y: 180,
     };
     this.velocity = {
       x: 1,
       y: 1,
-      ratio: 0.005,
+      ratio: this.speed,
     };
+    this.counter = 0;
+  }
+
+  respawn() {
+    this.position = {
+      x: this.generateRandomInteger(0, 1100),
+      y: 180,
+    };
+    this.ratio = 0.3;
+  }
+
+  generateRandomInteger(min, max) {
+    return Math.floor(min + Math.random() * (max - min + 1));
   }
 
   draw(ctx) {
@@ -40,12 +53,16 @@ export class Zombie {
 
   //metoda slouzici pro chozeni
   walk() {
+    this.counter++;
+    if (this.counter >= 10) {
+      this.counter = 0;
+      this.ratio += 0.01;
+    }
     //pozici x posouvame o ulozenou silu (velocitu)
-    this.position.x -= this.velocity.ratio * 35;
-    this.position.y += this.velocity.y;
+    this.position.x -= this.velocity.ratio * 0.05;
+    this.position.y += this.speed;
 
     //prenastavime vetsi ratio - opticka zmena pro zombika - vypada vetsi
-    this.ratio += this.velocity.ratio;
 
     //prenastavujeme rozmer podle noveho ratia
     this.size = {
@@ -56,19 +73,17 @@ export class Zombie {
 
   //metoda ktera slouzi pro aktualizace zombika
   update() {
+    if (this.position.y > 720) {
+      this.respawn();
+    }
     this.walk();
   }
 
   static genZombies() {
     Zombie.zombiesData.map((zombie) => {
       Zombie.zombies.push(
-        new Zombie(
-          zombie.name, 
-          zombie.hp,
-          zombie.speed,
-          zombie.path
-          )
-        );
+        new Zombie(zombie.name, zombie.hp, zombie.speed, zombie.path)
+      );
     });
   }
 }
