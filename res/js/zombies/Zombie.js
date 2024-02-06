@@ -26,7 +26,6 @@ export class Zombie {
       y: 1,
       ratio: this.speed,
     };
-    this.counter = 0;
   }
 
   respawn() {
@@ -53,11 +52,7 @@ export class Zombie {
 
   //metoda slouzici pro chozeni
   walk() {
-    this.counter++;
-    if (this.counter >= 10) {
-      this.counter = 0;
-      this.ratio += 0.01;
-    }
+    this.ratio = this.position.y / 500;
     //pozici x posouvame o ulozenou silu (velocitu)
     this.position.x -= this.velocity.ratio * 0.05;
     this.position.y += this.speed;

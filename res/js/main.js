@@ -1,7 +1,8 @@
 import { Zombie } from "./zombies/Zombie.js";
-import { Background } from "./ui/basic-utils.js";
+import { Background, Crosshair } from "./ui/basic-utils.js";
 
 const background = new Background();
+const crosshair = new Crosshair();
 
 const canvas = document.getElementById("canvas");
 const ctx = canvas.getContext("2d");
@@ -21,6 +22,15 @@ document.addEventListener("keydown", (e) => {
 
 document.addEventListener("keyup", (e) => {
   keys[e.code] = false; // klavesa: false
+});
+
+let mouseX;
+let mouseY;
+
+document.addEventListener("mousemove", (e) => {
+  const rect = canvas.getBoundingClientRect();
+  mouseX = (e.clientX - rect.left) / (rect.right - rect.left) * canvas.width;
+  mouseY = (e.clientY - rect.top) / (rect.bottom - rect.top) * canvas.height;
 });
 
 //Herni smycka
@@ -62,6 +72,7 @@ const render = () => {
   Zombie.zombies.map((zombie) => {
     zombie.draw(ctx);
   });
+  crosshair.draw(ctx, mouseX, mouseY);
 };
 const getFps = () => {};
 
