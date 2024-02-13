@@ -46,3 +46,19 @@ export class Crosshair {
     ctx.drawImage(this.img, this.position.x, this.position.y, this.size.width, this.size.height);
   }
 }
+
+export class Healthbar {
+  constructor(hp) {
+    this.hp = hp;
+  }
+
+  draw(ctx) {
+    ctx.save();
+    ctx.fillStyle = "red";
+    ctx.fillRect(10, 10, this.hp, 20);
+    ctx.lineWidth = 4;
+    ctx.strokeStyle = "black";
+    ctx.strokeRect(10, 10, this.hp, 20);
+    ctx.restore();
+  }
+}
